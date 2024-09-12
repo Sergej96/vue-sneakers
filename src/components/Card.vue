@@ -7,9 +7,7 @@ interface Props extends Item {
   onClickAdd?: (event: Event) => void;
   onClickFavorite?: (event: Event) => void;
 }
-const props = defineProps<Props>();
-
-console.log(props);
+defineProps<Props>();
 
 </script>
 

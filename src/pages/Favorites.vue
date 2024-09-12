@@ -15,8 +15,8 @@ onMounted(async () => {
     )
 
     favorites.value = data.map((obj: { item: Item }) => ({ ...obj.item, isAdded: false }))
-  } catch (err) {
-    console.log(err)
+  } catch (error) {
+    console.log(error)
   }
 })
 </script>

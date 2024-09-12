@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CardList from '@/components/CardList.vue';
 import { URL_API } from '@/consts';
+import { debounce } from '@/libs/debounce';
 import { fetchData } from '@/libs/fetchData';
 import { type CartContext } from '@/types/Cart';
 import type { Item } from '@/types/Items';
@@ -20,10 +21,10 @@ function onChangeSortBy(event: Event) {
     filters.sortBy = target.value;
 }
 
-function onChangeSearchQuery(event: Event) {
+const onChangeSearchQuery = debounce((event: Event) => {
     const target = event.target as HTMLInputElement;
     filters.searchQuery = target.value;
-}
+}, 200)
 
 function onClickAddPlus(item: Item) {
     if (!item.isAdded) {
